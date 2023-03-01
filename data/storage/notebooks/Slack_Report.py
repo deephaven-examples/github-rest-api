@@ -3,7 +3,7 @@ from slack_sdk import WebClient
 import numpy as np
 import os
 
-### CHANGE THIS VALUE IF YOU WANT THEM TO BE DIFFERENT THAN THE PREVIOUS SCRIPT ###
+### CHANGE THIS VALUE TO THE NAME OF THE SLACK CHANNEL TO WRITE TO ###
 my_channel_name = "#"
 
 def write_external_issues_to_slack(slack_token, org, repo, channel_name, issue_table):
@@ -11,7 +11,7 @@ def write_external_issues_to_slack(slack_token, org, repo, channel_name, issue_t
 
     slack_token = os.environ["SLACK_TOKEN"]
 
-    first_message = f"There are {issue_table.size} issues in <https://github.com/{org}/{repo}|{org}/{repo} submitted by external users.>"
+    first_message = f"There are {issue_table.size} issues in <https://github.com/{org}/{repo}|{org}/{repo}> submitted by external users."
     client.chat_postMessage(token=slack_token, channel=channel_name, text=first_message)
 
     issue_numbers = np.squeeze(dhnp.to_numpy(issue_table.select(["Number"])))
