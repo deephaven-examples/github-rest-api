@@ -8,7 +8,7 @@ import os, requests, threading
 my_org = ""
 my_repo = ""
 
-issue_col_defs = {"Filer": dht.string, "Number": dht.int32, "DateFiled": dht.DateTime, "MostRecentUpdate": dht.DateTime, "Title": dht.string, "Assignee": dht.string, "IsOpen": dht.bool_}
+issue_col_defs = {"Filer": dht.string, "Number": dht.int32, "DateFiled": dht.DateTime, "MostRecentUpdate": dht.DateTime, "Title": dht.string, "Assignee": dht.string, "URL": dht.string, "IsOpen": dht.bool_}
 issue_table_writer = DynamicTableWriter(issue_col_defs)
 repo_issues = issue_table_writer.table
 
@@ -36,9 +36,10 @@ def write_gh_issues_to_table(org, repo):
                 assignee = issue["assignee"]["login"]
             except TypeError:
                 assignee = ""
+            issue_url = f"https://github.com/{org}/{repo}/issues/{number}"
             is_open = not issue["closed_at"]
 
-            issue_table_writer.write_row(filer, number, timestamp, update_time, title, assignee, is_open)
+            issue_table_writer.write_row(filer, number, timestamp, update_time, title, assignee, issue_url, is_open)
         
         pagenum += 1
 
