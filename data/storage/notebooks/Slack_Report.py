@@ -6,7 +6,7 @@ import os
 ### CHANGE THIS VALUE TO THE NAME OF THE SLACK CHANNEL TO WRITE TO ###
 my_channel_name = "#"
 
-def write_external_issues_to_slack(slack_token, org, repo, channel_name, issue_table):
+def write_external_issues_to_slack(org, repo, channel_name, issue_table):
     client = WebClient()
 
     slack_token = os.environ["SLACK_TOKEN"]
@@ -21,4 +21,4 @@ def write_external_issues_to_slack(slack_token, org, repo, channel_name, issue_t
         chat_text[issue_idx] = f"<{issue_url}|{issue_number}>"
     client.chat_postMessage(token=slack_token, channel=channel_name, text=", ".join(chat_text))
 
-write_external_issues_to_slack(my_slack_token, my_org, my_repo, my_channel_name, repo_issues_by_nonmembers)
+write_external_issues_to_slack(my_org, my_repo, my_channel_name, repo_issues_by_nonmembers)
