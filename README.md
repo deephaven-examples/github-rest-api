@@ -38,8 +38,8 @@ The final step to set up the Slack bot is to add the bot to a channel of your ch
 There are *three* environment variables that must be set properly in order for this app to work:
 
 - `GH_PAT`: This is your GitHub personal access token.
-- `GH_UID`: This is your GitHub username.
-- `SLACK_BOT_TOKEN`: This is your Slack Bot User OAuth Token.
+- `GH_NAME`: This is your GitHub username.
+- `SLACK_TOKEN`: This is your Slack Bot User OAuth Token.
 
 ## Usage
 
