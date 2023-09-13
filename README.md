@@ -65,3 +65,7 @@ There are two scripts that come with this application; they can be found in the 
 ## Support
 
 If you have any questions, comments, concerns, or issues when running this application, feel free to file a ticket in this repository, or reach out to us on [Slack](https://deephaven.io/slack).
+
+## Note
+
+This application was last updated in March of 2023, when Deephaven Community Core version 0.22.0 was latest. It may not work on other versions.
